@@ -1,0 +1,117 @@
+// Colors
+$darkBlue: #34495e;
+$lightBlue: #6bb9f0;
+
+// Fonts
+$baseFont: Montserrat, Helvetica, Arial, sans-serif;
+
+// Mixins
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+    bottom: $bottom;
+    position: absolute;
+    left: $left;
+    top: $top;
+    right: $right;
+};
+
+@mixin font($family, $size, $weight: normal) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+};
+
+@mixin margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+    bottom: $bottom;
+    left: $left;
+    top: $top;
+    right: $right;
+};
+
+@mixin padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
+    padding: $top $right $bottom $right;
+};
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+};
+
+// Styles
+* {
+    font-size: 62.5%;
+}
+
+#wrapper {
+    text-align: center;
+    margin: 5rem auto;
+    user-select: none;
+}
+
+.heading {
+    color: $lightBlue;
+    font-family: $baseFont;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.instructions {
+    @include font($baseFont, 1.2rem);
+    @include margin(1rem, $bottom: 3rem);
+    text-transform: uppercase;
+}
+
+.bpm {
+    @include font($baseFont, 2rem, bold);
+    @include margin(0, auto, 0, auto);
+    @include padding(1rem, $bottom: 1rem);
+    border-radius: 100px;
+    border: 4px solid $darkBlue;
+    color: $lightBlue;
+    display: inline-block;
+    text-align: center;
+    width: 10%;
+}
+
+.slower,
+.faster {
+    color: $darkBlue;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 3rem;
+    padding: 1rem;
+    transition: color .15s;
+}
+
+.slower:hover,
+.faster:hover {
+    color: $lightBlue;
+}
+
+.beats {
+    &__beat,
+    &__glow {
+        @include size(15rem);
+    }
+    &__beat {
+        background: $darkBlue;
+        border-radius: 100%;
+        display: inline-block;
+        margin: 5rem;
+        position: relative;
+    }
+    &__glow {
+        @include absolute(0, $left: 0);
+        border-radius: 100%;
+        box-shadow: 0 0 2.5rem 1.5rem $lightBlue;
+        content: '';
+    }
+}
+
+@keyframes show1 {
+    0% {
+    opacity: 1;
+    }
+    100% {
+    opacity: 0;
+    }
+}
