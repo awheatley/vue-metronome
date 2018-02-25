@@ -8,9 +8,9 @@
 <body>
 	<h1 class="heading">Vue Metronome</h1>
 	<div id="wrapper">
-		<div class="slower">&ndash;</div>
-		<input type="text" class="bpm">
-		<div class="faster">&#43;</div>
+		<div class="slower" @click="slower">&ndash;</div>
+		<input type="text" class="bpm" v-model="bpm" @keyup="setBpm">
+		<div class="faster" @click="faster">&#43;</div>
 		<p class="instructions">Hold Shift key to decrement/increment by 10</p>
 
 		<div class="beats">
@@ -30,6 +30,7 @@
 				<span class="beats__glow"></span>
 			</div>
 		</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>
